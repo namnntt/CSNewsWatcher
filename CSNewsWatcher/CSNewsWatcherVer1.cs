@@ -6,8 +6,9 @@ using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
-public class CSNewsEmailer
-{
+namespace CSNewsWatcher { 
+public class CSWatcherVer1
+    {
     private HashSet<string> _knownHrefs = new HashSet<string>();
     private bool _isFirstRun = true;
 
@@ -118,4 +119,5 @@ public class CSNewsEmailer
             Console.ResetColor();
         }
     }
+}
 }

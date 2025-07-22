@@ -13,7 +13,7 @@ namespace CSNewsWatcher
                 await new BrowserFetcher().DownloadAsync();
                 Console.WriteLine("Trình duyệt đã sẵn sàng.");
 
-                var watcher = new CSNewsEmailer();
+                var watcher = new CSWatcherVer1();
 
                 while (true)
                 {
