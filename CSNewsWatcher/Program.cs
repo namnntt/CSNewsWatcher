@@ -6,22 +6,21 @@ namespace CSNewsWatcher
     {
         static async Task Main(string[] args)
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-
-            // **THÊM LẠI DÒNG QUAN TRỌNG NÀY**
-            // Tải trình duyệt MỘT LẦN DUY NHẤT khi chương trình khởi động
-            Console.WriteLine("Đang kiểm tra và tải phiên bản trình duyệt tương thích...");
-            await new BrowserFetcher().DownloadAsync();
-            Console.WriteLine("Trình duyệt đã sẵn sàng.");
-            Console.WriteLine("------------------------------------------");
-
-            var watcher = new CSNewsWatcherVer1();
-
-            while (true)
+            static async Task Main(string[] args)
             {
-                await watcher.CheckForNewPost();
-                Console.WriteLine("------------------------------------------");
-                await Task.Delay(TimeSpan.FromMinutes(1));
+                Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+                await new BrowserFetcher().DownloadAsync();
+                Console.WriteLine("Trình duyệt đã sẵn sàng.");
+
+                var watcher = new CSNewsEmailer();
+
+                while (true)
+                {
+                    await watcher.CheckAndNotify();
+                    Console.WriteLine("------------------------------------------");
+                    await Task.Delay(TimeSpan.FromMinutes(1));
+                }
             }
         }
     }
